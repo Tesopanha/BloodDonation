@@ -19,4 +19,5 @@ class Endpoint {
   static const String profile = 'api/v1/user/profile/';
   static const String accept = 'api/v1/status/accepted/';
   static const String history = 'api/v1/blood-history/';
+  static const String reset = '/api/v1/reset-password/';
 }

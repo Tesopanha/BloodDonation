@@ -39,9 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
           await controller.fetchRequestBlood();
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: ListView(
-            padding: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 10),
             children: [
               Obx(
                 () => SizedBox(
@@ -64,18 +64,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   InkWell(
                     onTap: () => Get.toNamed(AppRoute.request),
                     child: const CircleAvatar(
-                      maxRadius: 20,
+                      maxRadius: 18,
                       backgroundColor: AppColors.lightblue,
-                      child: Icon(
-                        Icons.arrow_forward_ios,
-                        color: AppColors.white,
-                      ),
+                      child: Icon(Icons.arrow_forward_ios,
+                          color: AppColors.white, size: 18),
                     ),
                   )
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               Obx(
                 () => ListView.separated(
@@ -90,10 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       final fullname =
                           '${detail.createdBy.firstName} ${detail.createdBy.lastName}';
                       return CardRequest(
-                          ontapAccept: () {
-                            print(
-                                "idddd===${controller.requestBloodList[index].id}");
-                          },
+                          ontapAccept: () {},
                           ontapCancel: () {},
                           name: fullname,
                           bloodType: detail.bloodType,
@@ -102,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
               ),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,18 +108,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   InkWell(
                     onTap: () => Get.toNamed(AppRoute.donation),
                     child: const CircleAvatar(
-                      maxRadius: 20,
+                      maxRadius: 18,
                       backgroundColor: AppColors.lightblue,
                       child: Icon(
                         Icons.arrow_forward_ios,
                         color: AppColors.white,
+                        size: 18,
                       ),
                     ),
                   )
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               Obx(
                 () => ListView.separated(
@@ -139,9 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       final fullname =
                           '${detail.createdBy.firstName} ${detail.createdBy.lastName}';
                       return CardRequest(
-                          ontapAccept: () {
-                            print('idd===${detail.id}');
-                          },
+                          ontapAccept: () {},
                           ontapCancel: () {},
                           isSelected: false,
                           name: fullname,
@@ -183,7 +177,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SmallText(
                     text: LocaleData.donor.getString(context),
-                    size: 15,
                   )
                 ],
               ),
@@ -212,7 +205,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SmallText(
                     text: LocaleData.formrequest.getString(context),
-                    size: 15,
                     textAlign: TextAlign.center,
                   )
                 ],
@@ -240,7 +232,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SmallText(
                     text: LocaleData.report.getString(context),
-                    size: 15,
                   )
                 ],
               ),

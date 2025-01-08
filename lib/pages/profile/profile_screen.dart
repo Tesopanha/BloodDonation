@@ -37,12 +37,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         text: LocaleData.profile.getString(context),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(
-              maxRadius: 60,
+              maxRadius: 50,
               backgroundColor: AppColors.lightGrey,
               child: Image.asset(
                 'asset/icons/Vector.png',
@@ -94,11 +93,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           BigText(
                             text: detail,
                             fontWeight: FontWeight.bold,
-                            size: 28,
+                            size: 26,
                           ),
                           SmallText(
                             text: type,
-                            size: 16,
+                            size: 14,
                           )
                         ],
                       ),
@@ -131,8 +130,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Get.toNamed(AppRoute.setting);
                       }
                       if (index == 4) {
-                        _controler.signout();
-                        Get.offAllNamed(AppRoute.authPage);
+                        // _controler.signout();
+                        // Get.offAllNamed(AppRoute.authPage);
+                        Get.defaultDialog(
+                          title: 'Sign Out',
+                          middleText: 'Are you sure you want to sign out?',
+                          textConfirm: 'Yes',
+                          textCancel: 'No',
+                          confirmTextColor: Colors.white,
+                          buttonColor: AppColors.darkBlue,
+                          cancelTextColor: AppColors.darkBlue,
+                          titleStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          onConfirm: () {
+                            _controler.signout();
+                            Get.offAllNamed(AppRoute.authPage);
+                          },
+                          onCancel: () {
+                            Get.back();
+                          },
+                        );
                       }
                     },
                     child: Row(
@@ -141,8 +160,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Row(
                           children: [
                             SizedBox(
-                              width: 30,
-                              height: 30,
+                              width: 25,
+                              height: 25,
                               child: Image.asset(
                                 key,
                                 fit: BoxFit.fill,
@@ -156,7 +175,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             SmallText(
                               text: detail[key],
-                              size: 18,
+                              size: 16,
                               color: index == 4
                                   ? AppColors.darkRed
                                   : AppColors.darkBlue,

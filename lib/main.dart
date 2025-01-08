@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:blood_donation_mobile/localization/locales.dart';
 import 'package:blood_donation_mobile/pages/auth/controller/authentication_controller.dart';
 import 'package:blood_donation_mobile/pages/dashboard/binding/binding.dart';
@@ -66,6 +68,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           debugShowCheckedModeBanner: false,
           supportedLocales: localization.supportedLocales,
           localizationsDelegates: localization.localizationsDelegates,
+          scrollBehavior: CustomScrollBehavior(),
           initialRoute: AppRoute.splash,
           getPages: routes,
           initialBinding: Dashbinding(),
@@ -79,5 +82,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     localization.onTranslatedLanguage = (Locale? locale) {
       setState(() {});
     };
+  }
+}
+
+class CustomScrollBehavior extends ScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return const ClampingScrollPhysics();
   }
 }

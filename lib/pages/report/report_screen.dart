@@ -28,7 +28,7 @@ class _ReportScreenState extends State<ReportScreen> {
         showBackButton: false,
       ),
       body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Container(
@@ -55,7 +55,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               ListView.separated(
                   shrinkWrap: true,

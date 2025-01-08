@@ -1,9 +1,8 @@
-import 'dart:async';
-
 import 'package:blood_donation_mobile/component/appbar_widget.dart';
 import 'package:blood_donation_mobile/component/custom_button.dart';
 import 'package:blood_donation_mobile/component/widget_colors.dart';
 import 'package:blood_donation_mobile/component/widget_text.dart';
+import 'package:blood_donation_mobile/pages/auth/controller/authentication_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,41 +14,29 @@ class OtpVerifyScreen extends StatefulWidget {
 }
 
 class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
-  late Timer _timer;
-  int _remainingTime = 30;
+  final AuthenticationController controller =
+      Get.find<AuthenticationController>();
   final List<TextEditingController> _otpControllers =
       List.generate(6, (index) => TextEditingController());
 
   final Map<String, dynamic> verify = Get.arguments;
+  String? phone = '';
+  String? new_password = '';
+  String? confirm_password = '';
+  String? otp;
   @override
   void initState() {
     super.initState();
-    _startTimer();
+
     if (verify['otp'] != null) {
-      String otp = verify['otp'].toString();
-      for (int i = 0; i < otp.length; i++) {
-        _otpControllers[i].text = otp[i];
+      otp = verify['otp'].toString();
+      for (int i = 0; i < otp!.length; i++) {
+        _otpControllers[i].text = otp![i];
       }
+      phone = verify['phone'].toString();
+      new_password = verify['new_password'].toString();
+      confirm_password = verify['confirm_password'].toString();
     }
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_remainingTime > 0) {
-        setState(() {
-          _remainingTime--;
-        });
-      } else {
-        // Stop the timer when it reaches zero
-        _timer.cancel();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel(); // Cancel the timer when the widget is disposed
-    super.dispose();
   }
 
   @override
@@ -80,7 +67,8 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const SmallText(text: "Enter the OTP sent to +855 012 123 456"),
+                SmallText(
+                    text: "Enter the OTP sent to this phonenumber $phone"),
                 const SizedBox(
                   height: 20,
                 ),
@@ -105,10 +93,6 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                SmallText(
-                  text: '$_remainingTime seconds',
-                  size: 18,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -131,7 +115,13 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
               width: double.infinity,
               child: CustomButton(
                 text: "Submit",
-                onpressed: () {},
+                onpressed: () async {
+                  await controller.resetPassword(
+                      phone: phone!,
+                      otp: otp!,
+                      new_password: new_password!,
+                      confirm_password: confirm_password!);
+                },
               ),
             )
           ],

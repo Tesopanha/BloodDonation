@@ -39,14 +39,14 @@ class _SettingScreenState extends State<SettingScreen> {
         onNotificationPressed: () => Get.back(),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             ListView.separated(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 separatorBuilder: (context, _) => const Divider(
-                      height: 30,
+                      height: 35,
                       color: AppColors.lightGrey,
                     ),
                 itemCount: feature.length,
@@ -72,14 +72,14 @@ class _SettingScreenState extends State<SettingScreen> {
                               key,
                               color: AppColors.darkBlue,
                               fit: BoxFit.fill,
-                              width: 30,
+                              width: 25,
                             ),
                             const SizedBox(
                               width: 10,
                             ),
                             SmallText(
                               text: detail[key],
-                              size: 16,
+                              size: 14,
                               color:
                                   Theme.of(context).textTheme.bodyLarge?.color,
                               fontWeight: FontWeight.w500,
@@ -89,12 +89,12 @@ class _SettingScreenState extends State<SettingScreen> {
                         if (index == 0)
                           Obx(() {
                             return Switch(
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
                               activeColor: AppColors.darkBlue,
                               value: themeController.isDarkMode.value,
                               onChanged: (value) {
                                 themeController.toggleTheme();
-                                print(
-                                    "Colors:${Theme.of(context).textTheme.bodyLarge?.color}");
                               },
                             );
                           }),

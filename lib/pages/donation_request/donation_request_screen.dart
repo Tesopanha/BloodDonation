@@ -29,9 +29,9 @@ class _DonationRequestScreenState extends State<DonationRequestScreen> {
         },
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: ListView.separated(
-            padding: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 10),
             separatorBuilder: (context, _) => const SizedBox(
                   height: 10,
                 ),

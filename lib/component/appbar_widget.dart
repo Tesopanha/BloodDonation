@@ -24,11 +24,11 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       leading: showBackButton
           ? Padding(
-              padding: const EdgeInsets.only(left: 12),
+              padding: const EdgeInsets.only(left: 10),
               child: IconButton(
                   onPressed: onNotificationPressed ?? () {},
                   icon: const Icon(Icons.arrow_back_ios,
-                      color: AppColors.white, size: 32)))
+                      color: AppColors.white, size: 24)))
           : null,
       title: BigText(
         text: text,
@@ -43,7 +43,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                   icon: const Icon(
                     Icons.notifications,
                     color: AppColors.white,
-                    size: 35,
+                    size: 30,
                   )),
             ]
           : null,

@@ -65,36 +65,30 @@ class _FindDonorScreenState extends State<FindDonorScreen> {
           showBackButton: false,
         ),
         body: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(10),
           child: ListView(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: LocaleData.name.getString(context),
-                    hintStyle: TextStyle(
-                        color: Theme.of(context).textTheme.titleLarge?.color),
-                    prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: const BorderSide(color: AppColors.grey),
-                    ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: LocaleData.name.getString(context),
+                  hintStyle: TextStyle(
+                      color: Theme.of(context).textTheme.titleLarge?.color),
+                  prefixIcon: const Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: AppColors.grey),
                   ),
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 8,
               ),
-              ListView.separated(
+              ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  separatorBuilder: (context, _) => const SizedBox(
-                        height: 10,
-                      ),
                   itemCount: details.length,
                   itemBuilder: (context, index) {
                     final detail = details[index];
@@ -126,6 +120,7 @@ class _FindDonorScreenState extends State<FindDonorScreen> {
                                     children: [
                                       Image.asset(
                                         'asset/icons/map-hospital.png',
+                                        width: 20,
                                       ),
                                       const SizedBox(
                                         width: 10,
@@ -135,6 +130,9 @@ class _FindDonorScreenState extends State<FindDonorScreen> {
                                     ],
                                   )
                                 ],
+                              ),
+                              const SizedBox(
+                                width: 20,
                               ),
                               Column(
                                 children: [

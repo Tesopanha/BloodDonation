@@ -35,7 +35,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Form(
           key: _loginFormKey,
           child: ListView(
@@ -102,9 +102,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       if (_loginFormKey.currentState?.validate() ?? false) {
                         String phone = widget.phonenumberController.text;
                         String password = widget.passwordController.text;
-                        try {
-                          await controller.login(phone, password);
-                        } catch (e) {}
+                        await controller.login(phone, password);
                       }
                     }),
               ),
@@ -130,7 +128,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           hintText: text,
           hintStyle: const TextStyle(color: AppColors.grey)
               .merge(GoogleFonts.notoSansKhmer()),
-          contentPadding: const EdgeInsets.all(16),
+          contentPadding: const EdgeInsets.all(14),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
           ),

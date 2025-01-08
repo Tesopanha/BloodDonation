@@ -44,7 +44,7 @@ class _SignupWidgetState extends State<SignupWidget> {
     return Scaffold(
       backgroundColor: Theme.of(context).cardColor,
       body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Form(
             key: _signupFormKey,
             child: ListView(
@@ -70,7 +70,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     isVisible: isConfirmPasswordVisible,
                     onVisibleToggle: _toggleConfirmPasswordVisibility),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: 20),
                 SizedBox(
                   width: double.infinity,
                   child: CustomButton(
@@ -151,7 +151,7 @@ class _SignupWidgetState extends State<SignupWidget> {
           hintText: text,
           hintStyle: const TextStyle(color: AppColors.grey)
               .merge(GoogleFonts.notoSansKhmer()),
-          contentPadding: const EdgeInsets.all(16),
+          contentPadding: const EdgeInsets.all(14),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
           ),

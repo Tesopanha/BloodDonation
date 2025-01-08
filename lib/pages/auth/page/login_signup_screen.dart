@@ -75,7 +75,7 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                                 size: 32,
                               )),
                           SizedBox(
-                            width: width - 380,
+                            width: width - 385,
                           ),
                           header(
                             isSelected: controller.selectedPage.value == 0,
@@ -84,22 +84,22 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
                       )),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Expanded(
                   child: Container(
                       //height: height,
                       decoration: BoxDecoration(
                           borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(30),
-                              topLeft: Radius.circular(30)),
+                              topRight: Radius.circular(28),
+                              topLeft: Radius.circular(28)),
                           color: Theme.of(context).cardColor),
                       child: Column(
                         children: [
                           Obx(
                             () => Container(
                               height: 55,
-                              margin: const EdgeInsets.all(16),
+                              margin: const EdgeInsets.all(14),
                               decoration: BoxDecoration(
                                 color: Theme.of(context)
                                     .dividerColor
@@ -164,31 +164,28 @@ class _LoginSignupScreenState extends State<LoginSignupScreen> {
   }
 
   Widget header({required bool isSelected}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Image.asset(
-              isSelected
-                  ? 'asset/icons/Light/login.png'
-                  : 'asset/icons/Light/signup.png',
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Center(
+          child: Image.asset(
+            isSelected
+                ? 'asset/icons/Light/login.png'
+                : 'asset/icons/Light/signup.png',
           ),
-          const SizedBox(height: 24),
-          BigText(
-              text: LocaleData.welcome.getString(context),
-              size: 24,
-              color: AppColors.white),
-          BigText(
-              text: isSelected
-                  ? LocaleData.loginTitle.getString(context)
-                  : LocaleData.signupTitle.getString(context),
-              size: 24,
-              color: AppColors.white),
-        ],
-      ),
+        ),
+        const SizedBox(height: 24),
+        BigText(
+            text: LocaleData.welcome.getString(context),
+            size: 24,
+            color: AppColors.white),
+        BigText(
+            text: isSelected
+                ? LocaleData.loginTitle.getString(context)
+                : LocaleData.signupTitle.getString(context),
+            size: 24,
+            color: AppColors.white),
+      ],
     );
   }
 

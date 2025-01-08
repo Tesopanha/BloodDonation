@@ -24,7 +24,7 @@ class AuthenticationController extends GetxController {
   var registerModel = Rxn<RegisterModel>();
   var otpModel = Rxn<OtpModel>();
   var forget = Rxn<ForgetModel>();
-
+  late String? message;
   var token = ''.obs;
 
   static const String TOKEN_KEY = 'auth_token';
@@ -121,15 +121,38 @@ class AuthenticationController extends GetxController {
   }
 
   Future<void> forgetPassword(String phonenumber) async {
-    // Normalize the phone number to include the country code +855
-    phonenumber = _normalizePhoneNumber(phonenumber);
-
     try {
+      phonenumber = _normalizePhoneNumber(phonenumber);
+
       final result = await _apiService.forgetPassword(phonenumber);
       if (result != null) {
         forget(result);
       } else {
         print("Failed to send forget password request");
+      }
+    } catch (e) {
+      print("Error during forget password request: $e");
+    }
+  }
+
+  Future<void> resetPassword(
+      {required String phone,
+      required String otp,
+      required String new_password,
+      required String confirm_password}) async {
+    try {
+      phone = _normalizePhoneNumber(phone);
+      final Map<String, dynamic> data = {
+        "phone": phone,
+        "otp": otp,
+        "new_password": new_password,
+        "confirm_password": confirm_password
+      };
+      final result = await _apiService.resetPassword(data: data);
+      if (result != null) {
+        message = result;
+        _showSnackbar("Successfully", result, Colors.green);
+        Get.offAllNamed(AppRoute.authPage);
       }
     } catch (e) {
       print("Error during forget password request: $e");

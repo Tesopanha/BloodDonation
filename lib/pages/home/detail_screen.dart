@@ -63,7 +63,7 @@ class _DetailScreenState extends State<DetailScreen> {
         children: [
           _background(context, backGround),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -103,7 +103,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         child: CustomButton(
                             text: primaryButtonText, onpressed: () {})),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     SizedBox(
                         width: double.infinity,

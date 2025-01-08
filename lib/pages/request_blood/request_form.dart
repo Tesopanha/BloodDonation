@@ -36,7 +36,7 @@ class RequestForm extends StatelessWidget {
           },
         ),
         body: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(10),
           child: Form(
             key: _requestFormKey,
             child: Column(
@@ -118,17 +118,15 @@ class RequestForm extends StatelessWidget {
           child: SmallText(
             text: value,
             size: 16,
+            color: AppColors.grey,
           ),
         );
       }).toList(),
       decoration: InputDecoration(
         hintText: LocaleData.requestType.getString(context),
-        prefixIcon: const Icon(
-          Icons.send,
-          color: Colors.grey,
-        ),
+        prefixIcon: const Icon(Icons.send, color: AppColors.grey),
         enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.grey),
+          borderSide: BorderSide(color: AppColors.lightGrey),
         ),
       ),
     );

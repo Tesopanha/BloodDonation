@@ -22,13 +22,14 @@ class DashBoard extends GetView<NavigateController> {
       ),
       bottomNavigationBar: Obx(
         () => GNav(
-          tabMargin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          tabMargin: const EdgeInsets.all(10),
           gap: 3,
           activeColor: Theme.of(context).colorScheme.primary,
-          iconSize: 24,
-          padding: const EdgeInsets.all(10),
+          iconSize: 22,
+          padding: const EdgeInsets.all(8),
           duration: const Duration(milliseconds: 400),
+          textStyle:
+              TextStyle(fontSize: 12, color: Theme.of(context).primaryColor),
           tabBackgroundColor:
               Theme.of(context).colorScheme.primary.withOpacity(0.1),
           color: Theme.of(context).iconTheme.color,

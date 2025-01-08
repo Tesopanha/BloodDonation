@@ -19,89 +19,79 @@ class NotificatonScreen extends StatelessWidget {
         onNotificationPressed: () => Get.back(),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: ListView(
-          children: [
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              separatorBuilder: (_, context) => const SizedBox(
-                height: 20,
-              ),
-              itemCount: 4,
-              itemBuilder: (context, index) {
-                return Card(
-                  elevation: 2,
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 8, right: 8, top: 5),
-                    height: 170,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 2,
+              child: Container(
+                padding: const EdgeInsets.only(left: 8, right: 8, top: 5),
+                height: 170,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Image.asset(
+                        'asset/icons/Blood.png',
+                        height: 40,
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: CircleAvatar(
-                              backgroundColor: AppColors.lightGrey,
-                              child: Image.asset(
-                                'asset/icons/Blood.png',
-                                height: 28,
-                              )),
+                        const SmallText(
+                          text: 'Donation Update',
+                          color: AppColors.darkGrey,
+                          size: 16,
+                          fontWeight: FontWeight.bold,
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SmallText(
-                              text: 'Donation Update',
-                              color: AppColors.darkGrey,
-                              size: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            const SmallText(
-                              text:
-                                  "Your recent donation has been \nsuccessfully processed",
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: 110,
-                                    height: 45,
-                                    child: customButton(
-                                      "View Details",
-                                    )),
-                                const SizedBox(
-                                  width: 18,
-                                ),
-                                SizedBox(
-                                    width: 70,
-                                    height: 45,
-                                    child: customButton(
-                                      "Share",
-                                    )),
-                              ],
-                            ),
-                          ],
+                        const SmallText(
+                          text:
+                              "Your recent donation has been \nsuccessfully processed",
                         ),
                         const SizedBox(
-                          width: 10,
+                          height: 10,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 100),
-                          child: SmallText(
-                            text: "23min",
-                            size: 16,
-                          ),
-                        )
+                        Row(
+                          children: [
+                            SizedBox(
+                                width: 110,
+                                height: 45,
+                                child: customButton(
+                                  "View Details",
+                                )),
+                            const SizedBox(
+                              width: 18,
+                            ),
+                            SizedBox(
+                                width: 70,
+                                height: 45,
+                                child: customButton(
+                                  "Share",
+                                )),
+                          ],
+                        ),
                       ],
                     ),
-                  ),
-                );
-              },
-            )
-          ],
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 100),
+                      child: SmallText(
+                        text: "23min",
+                        size: 16,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

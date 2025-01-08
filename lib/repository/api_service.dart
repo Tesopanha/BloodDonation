@@ -181,6 +181,23 @@ class ApiService {
     }
   }
 
+  Future<String?> resetPassword({required Map<String, dynamic> data}) async {
+    try {
+      final url = _apiClient.getFullUrl(Endpoint.reset);
+
+      final response = await dio.post(
+        url,
+        data: data,
+      );
+
+      return _handleResponse<String>(response,
+          (data) => data['message'] as String? ?? 'Password reset successful');
+    } catch (e) {
+      _handleError(e);
+      return null;
+    }
+  }
+
   Future<void> accecpted({required int id, required String token}) async {
     try {
       final url = _apiClient.getFullUrl("${Endpoint.accept}$id/");
